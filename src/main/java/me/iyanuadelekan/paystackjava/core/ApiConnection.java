@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.net.ssl.SSLContext;
@@ -94,7 +94,7 @@ public class ApiConnection {
      * @param query - HashMap containing parameters to send
      * @return - JSONObject containing API response
      */
-    public JSONObject connectAndQuery(HashMap<String, Object> query) {
+    public JSONObject connectAndQuery(Map<String, Object> query) {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
                     .header("Accept", "application/json")
@@ -152,7 +152,7 @@ public class ApiConnection {
      * @param query - HashMap containing parameters to send
      * @return - JSONObject containing API response
      */
-    public JSONObject connectAndQueryWithGet(HashMap<String, Object> query) {
+    public JSONObject connectAndQueryWithGet(Map<String, Object> query) {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("Accept", "application/json")
@@ -192,7 +192,7 @@ public class ApiConnection {
      * @param query - HashMap containing parameters to send
      * @return - JSONObject containing API response
      */
-    public JSONObject connectAndQueryWithPut(HashMap<String, Object> query) {
+    public JSONObject connectAndQueryWithPut(Map<String, Object> query) {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("Accept", "application/json")

@@ -4,7 +4,7 @@ import me.iyanuadelekan.paystackjava.constants.Definitions;
 
 import org.json.JSONObject;
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Iyanu Adelekan on 17/07/2016.
@@ -19,7 +19,7 @@ public class Transactions {
      * @param queryMap
      * @return
      */
-    public JSONObject initializeTransaction(HashMap<String, Object> queryMap) {
+    public JSONObject initializeTransaction(Map<String, Object> queryMap) {
         this.apiConnection = new ApiConnection(Definitions.PAYSTACK_TRANSACTIONS_INITIALIZE_TRANSACTION);
         return this.apiConnection.connectAndQuery(queryMap);
     }
@@ -74,7 +74,7 @@ public class Transactions {
      * @param queryMap
      * @return
      */
-    public JSONObject listTransactions(HashMap<String, Object> queryMap) {
+    public JSONObject listTransactions(Map<String, Object> queryMap) {
         this.apiConnection = new ApiConnection(Definitions.PAYSTACK_TRANSACTIONS_LIST_TRANSACTIONS);
         return this.apiConnection.connectAndQueryWithGet(queryMap);
     }
@@ -122,7 +122,7 @@ public class Transactions {
      * @param queryMap
      * @return
      */
-    public JSONObject chargeAuthorization(HashMap<String, Object> queryMap) {
+    public JSONObject chargeAuthorization(Map<String, Object> queryMap) {
         this.apiConnection = new ApiConnection(Definitions.PAYSTACK_TRANSACTIONS_CHARGE_AUTHORIZATION);
         return this.apiConnection.connectAndQuery(queryMap);
     }
@@ -168,7 +168,7 @@ public class Transactions {
      * @param queryMap
      * @return
      */
-    public JSONObject chargeToken(HashMap<String, Object> queryMap) {
+    public JSONObject chargeToken(Map<String, Object> queryMap) {
         this.apiConnection = new ApiConnection(Definitions.PAYSTACK_TRANSACTIONS_CHARGE_TOKEN);
         return this.apiConnection.connectAndQuery(queryMap);
     }
@@ -211,7 +211,7 @@ public class Transactions {
      * @param queryMap
      * @return
      */
-    public JSONObject exportTransactions(HashMap<String, Object> queryMap) {
+    public JSONObject exportTransactions(Map<String, Object> queryMap) {
         this.apiConnection = new ApiConnection(Definitions.PAYSTACK_TRANSACTIONS_EXPORT_TRANSACTIONS);
         return this.apiConnection.connectAndQueryWithGet(queryMap);
     }

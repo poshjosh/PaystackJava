@@ -4,6 +4,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.request.BaseRequest;
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
@@ -206,6 +207,19 @@ public class ApiConnection {
         return null;
     }
 
+    /**
+     * Used to send a GET request to the Paystack API
+     *
+     * @param query - Map containing parameters to send
+     * @return - HttpResponse containing API response
+     */
+    public BaseRequest connectAndQueryWithGetForResponse(Map<String, Object> query) {
+        return Unirest.get(url)
+                .header("Accept", "application/json")
+                .header("Authorization", "Bearer " + apiKey)
+                .queryString(query);
+    }
+    
     /**
      * Called to shut down the background event loop
      */

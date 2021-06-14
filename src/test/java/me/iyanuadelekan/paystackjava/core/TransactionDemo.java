@@ -1,5 +1,9 @@
 package me.iyanuadelekan.paystackjava.core;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.request.BaseRequest;
+import java.util.Collections;
+import java.util.Map;
 import org.json.JSONObject;
 
 /**
@@ -16,12 +20,26 @@ public class TransactionDemo {
             JSONObject json = tx.initializeTransaction(ref, "100", "posh.bc@gmail.com", null, "http://localhost:8080");    
             System.out.println("Response1: " + json.toString(4));
 
+            tx.verifyTransaction(ref);
+            
             JSONObject data = json.getJSONObject("data");
             ApiConnection conn = new ApiConnection(data.getString("authorization_url"));
             
-//            Map<String, Object> params = Collections.singletonMap("access_code", data.get("access_code"));
-//            json = conn.connectAndQueryWithGet(params);
-//            System.out.println("Response2: " + json.toString(4));
+            Map<String, Object> params = Collections.singletonMap("access_code", data.get("access_code"));
+            BaseRequest req = conn.connectAndQueryWithGetForResponse(params);
+            try{
+                HttpResponse<String> response = req.asString();
+                if(response == null) {
+                    System.out.println("Response2: " + response);
+                }else{
+                    System.out.println("Response2.Message: " + response.getStatusText());
+                    System.out.println("Response2.Status: " + response.getStatus());
+                    System.out.println("Response2.Headers: " + response.getHeaders());
+                    System.out.println("Response2.Body: " + response.getBody());
+                }
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
 
         }finally{
             ApiConnection.shutDown();
